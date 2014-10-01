@@ -156,7 +156,7 @@ class MissionForm
     initialOrbit = $('#initialOrbit').val().trim()
     finalOrbit = $('#finalOrbit').val().trim()
     transferType = $('#transferTypeSelect').val()
-    distancia = $('#distancia').val().trim()
+    distancia = 0
     
     if !origin.mass? or +initialOrbit == 0
       initialOrbitalVelocity = 0
