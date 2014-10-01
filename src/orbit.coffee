@@ -331,7 +331,7 @@ ejectionAngle = (vsoi, theta, prograde) ->
   else
     Math.acos(numeric.dotVV([vx, vy, 0], prograde))
 
-Orbit.transfer = (transferType, originBody, destinationBody, t0, dt, initialOrbitalVelocity, finalOrbitalVelocity, p0, v0, n0, p1, v1, planeChangeAngleToIntercept, distancia) ->
+Orbit.transfer = (transferType, originBody, destinationBody, t0, dt, initialOrbitalVelocity, finalOrbitalVelocity, p0, v0, n0, p1, v1, distancia, planeChangeAngleToIntercept) ->
   # Fill in missing values
   referenceBody = originBody.orbit.referenceBody
   t1 = t0 + dt
@@ -389,7 +389,7 @@ Orbit.transfer = (transferType, originBody, destinationBody, t0, dt, initialOrbi
       planeChangeAngle = Math.atan2(Math.tan(relativeInclination), Math.sin(x))
       Math.abs(2 * orbit.speedAtTrueAnomaly(trueAnomalyAtIntercept - x) * Math.sin(0.5 * planeChangeAngle))
     
-    return Orbit.transfer("planeChange", originBody, destinationBody, t0, dt, initialOrbitalVelocity, finalOrbitalVelocity, p0, v0, n0, p1, v1, x, distancia)
+    return Orbit.transfer("planeChange", originBody, destinationBody, t0, dt, initialOrbitalVelocity, finalOrbitalVelocity, p0, v0, n0, p1, v1, distancia, x)
   else if transferType == "planeChange"
     planeChangeAngleToIntercept ?= HALF_PI
     relativeInclination = Math.asin(numeric.dotVV(p1, n0) / numeric.norm2(p1))

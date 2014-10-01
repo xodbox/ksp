@@ -455,7 +455,7 @@
     }
   };
 
-  Orbit.transfer = function(transferType, originBody, destinationBody, t0, dt, initialOrbitalVelocity, finalOrbitalVelocity, p0, v0, n0, p1, v1, planeChangeAngleToIntercept, distancia) {
+  Orbit.transfer = function(transferType, originBody, destinationBody, t0, dt, initialOrbitalVelocity, finalOrbitalVelocity, p0, v0, n0, p1, v1, distancia, planeChangeAngleToIntercept) {
     var ballisticTransfer, dv, ejectionDeltaV, ejectionDeltaVector, ejectionInclination, ejectionVelocity, insertionDeltaV, insertionDeltaV2, insertionDeltaVector, insertionInclination, insertionVelocity, minDeltaV, nu0, nu1, orbit, p1InOriginPlane, planeChangeAngle, planeChangeAxis, planeChangeDeltaV, planeChangeRotation, planeChangeTime, planeChangeTransfer, planeChangeTrueAnomaly, referenceBody, relativeInclination, s, solutions, t1, transferAngle, trueAnomalyAtIntercept, v1InOriginPlane, x, x1, x2, _i, _len, _ref;
     referenceBody = originBody.orbit.referenceBody;
     t1 = t0 + dt;
@@ -523,7 +523,7 @@
         planeChangeAngle = Math.atan2(Math.tan(relativeInclination), Math.sin(x));
         return Math.abs(2 * orbit.speedAtTrueAnomaly(trueAnomalyAtIntercept - x) * Math.sin(0.5 * planeChangeAngle));
       });
-      return Orbit.transfer("planeChange", originBody, destinationBody, t0, dt, initialOrbitalVelocity, finalOrbitalVelocity, p0, v0, n0, p1, v1, x, distancia);
+      return Orbit.transfer("planeChange", originBody, destinationBody, t0, dt, initialOrbitalVelocity, finalOrbitalVelocity, p0, v0, n0, p1, v1, distancia, x);
     } else if (transferType === "planeChange") {
       if (planeChangeAngleToIntercept == null) {
         planeChangeAngleToIntercept = HALF_PI;
