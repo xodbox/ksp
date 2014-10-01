@@ -288,6 +288,7 @@ insertionToCircularDeltaV2 = (body, vsoi, v0, rdest, d) ->
   b = d * Math.sin(th)
   a = mu * rsoi / (2 * mu - rsoi * v * v)
   e = Math.sqrt(1 + b * b / (a * a))
+  r0 = a * (1 - e * e)
   
 ejectionAngle = (vsoi, theta, prograde) ->
   # Normalize and componentize the soi velocity vector
