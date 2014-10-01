@@ -345,6 +345,8 @@ Orbit.transfer = (transferType, originBody, destinationBody, t0, dt, initialOrbi
     v1 ?= destinationBody.orbit.velocityAtTrueAnomaly(nu1)
   n0 ?= originBody.orbit.normalVector()
   
+  dist = 20
+  
   if transferType == "optimal"
     ballisticTransfer = Orbit.transfer("ballistic", originBody, destinationBody, t0, dt, initialOrbitalVelocity, finalOrbitalVelocity, p0, v0, n0, p1, v1)
     return ballisticTransfer if ballisticTransfer.angle <= HALF_PI
@@ -436,7 +438,7 @@ Orbit.transfer = (transferType, originBody, destinationBody, t0, dt, initialOrbi
     if finalOrbitalVelocity
       insertionDeltaV = insertionToCircularDeltaV(destinationBody, insertionDeltaV, finalOrbitalVelocity)
       # insertionDeltaV2 = insertionToCircularDeltaV2(destinationBody, insertionDeltaVector, finalOrbitalVelocity, p1, 100000)
-      insertionDeltaV2 = 15
+      insertionDeltaV2 = dist
   else
     insertionDeltaV = 0
   

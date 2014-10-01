@@ -456,7 +456,7 @@
   };
 
   Orbit.transfer = function(transferType, originBody, destinationBody, t0, dt, initialOrbitalVelocity, finalOrbitalVelocity, p0, v0, n0, p1, v1, planeChangeAngleToIntercept) {
-    var ballisticTransfer, dv, ejectionDeltaV, ejectionDeltaVector, ejectionInclination, ejectionVelocity, insertionDeltaV, insertionDeltaV2, insertionDeltaVector, insertionInclination, insertionVelocity, minDeltaV, nu0, nu1, orbit, p1InOriginPlane, planeChangeAngle, planeChangeAxis, planeChangeDeltaV, planeChangeRotation, planeChangeTime, planeChangeTransfer, planeChangeTrueAnomaly, referenceBody, relativeInclination, s, solutions, t1, transferAngle, trueAnomalyAtIntercept, v1InOriginPlane, x, x1, x2, _i, _len, _ref;
+    var ballisticTransfer, dist, dv, ejectionDeltaV, ejectionDeltaVector, ejectionInclination, ejectionVelocity, insertionDeltaV, insertionDeltaV2, insertionDeltaVector, insertionInclination, insertionVelocity, minDeltaV, nu0, nu1, orbit, p1InOriginPlane, planeChangeAngle, planeChangeAxis, planeChangeDeltaV, planeChangeRotation, planeChangeTime, planeChangeTransfer, planeChangeTrueAnomaly, referenceBody, relativeInclination, s, solutions, t1, transferAngle, trueAnomalyAtIntercept, v1InOriginPlane, x, x1, x2, _i, _len, _ref;
     referenceBody = originBody.orbit.referenceBody;
     t1 = t0 + dt;
     if (!((p0 != null) && (v0 != null))) {
@@ -480,6 +480,7 @@
     if (n0 == null) {
       n0 = originBody.orbit.normalVector();
     }
+    dist = 20;
     if (transferType === "optimal") {
       ballisticTransfer = Orbit.transfer("ballistic", originBody, destinationBody, t0, dt, initialOrbitalVelocity, finalOrbitalVelocity, p0, v0, n0, p1, v1);
       if (ballisticTransfer.angle <= HALF_PI) {
@@ -578,7 +579,7 @@
       insertionInclination = Math.asin(insertionDeltaVector[2] / insertionDeltaV);
       if (finalOrbitalVelocity) {
         insertionDeltaV = insertionToCircularDeltaV(destinationBody, insertionDeltaV, finalOrbitalVelocity);
-        insertionDeltaV2 = 15;
+        insertionDeltaV2 = dist;
       }
     } else {
       insertionDeltaV = 0;
