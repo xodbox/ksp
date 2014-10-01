@@ -57,6 +57,7 @@ HEIGHT = 300
       p2 = destinationOrbit.positionAtTrueAnomaly(trueAnomaly)
       v2 = destinationOrbit.velocityAtTrueAnomaly(trueAnomaly)
   
+      distancia = 20
       transfer = Orbit.transfer(distancia, transferType, originBody, destinationBody, departureTime, timeOfFlight, initialOrbitalVelocity, finalOrbitalVelocity, p1, v1, n1, p2, v2)
       deltaVs[i++] = deltaV = transfer.deltaV
 
