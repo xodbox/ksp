@@ -32,7 +32,7 @@ showTransferDetailsForPoint = (point) ->
   t0 = mission.earliestDeparture + x * mission.xResolution
   dt = mission.shortestTimeOfFlight + y * mission.yResolution
   
-  transfer = Orbit.transfer(74, mission.transferType, mission.originBody, mission.destinationBody, t0, dt, mission.initialOrbitalVelocity, mission.finalOrbitalVelocity)
+  transfer = Orbit.transfer(mission.distancia, mission.transferType, mission.originBody, mission.destinationBody, t0, dt, mission.initialOrbitalVelocity, mission.finalOrbitalVelocity)
   showTransferDetails(transfer, t0, dt)
   
 showTransferDetails = (transfer, t0, dt) ->
