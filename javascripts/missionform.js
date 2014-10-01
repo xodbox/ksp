@@ -273,7 +273,6 @@
       xScale = latestDeparture - earliestDeparture;
       shortestTimeOfFlight = KerbalTime.fromDuration(0, +$('#shortestTimeOfFlight').val()).t;
       yScale = KerbalTime.fromDuration(0, +$('#longestTimeOfFlight').val()).t - shortestTimeOfFlight;
-      distancia = 2200;
       return mission = {
         transferType: transferType,
         originBody: origin,
