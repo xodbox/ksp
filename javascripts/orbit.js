@@ -421,7 +421,7 @@
     v = numeric.norm2(vsoi);
     dx = -1 * d * rdest[1] / Math.sqrt(rdest[0] * rdest[0] + rdest[1] * rdest[1]);
     dy = 1 * d * rdest[0] / Math.sqrt(rdest[0] * rdest[0] + rdest[1] * rdest[1]);
-    return 100;
+    return (dx * vsoi([0] + dy * vsoi[1])) / (d * v);
   };
 
   ejectionAngle = function(vsoi, theta, prograde) {
