@@ -156,6 +156,7 @@ class MissionForm
     initialOrbit = $('#initialOrbit').val().trim()
     finalOrbit = $('#finalOrbit').val().trim()
     transferType = $('#transferTypeSelect').val()
+    distancia = $('#distancia').val()
     
     if !origin.mass? or +initialOrbit == 0
       initialOrbitalVelocity = 0
@@ -175,7 +176,7 @@ class MissionForm
     
     shortestTimeOfFlight = KerbalTime.fromDuration(0, +$('#shortestTimeOfFlight').val()).t
     yScale = KerbalTime.fromDuration(0, +$('#longestTimeOfFlight').val()).t - shortestTimeOfFlight
-    
+	
     mission = {
       transferType: transferType
       originBody: origin
@@ -186,7 +187,8 @@ class MissionForm
       shortestTimeOfFlight: shortestTimeOfFlight
       xScale: xScale
       yScale: yScale
-    }  
+      distancia: distancia
+	}  
 
   # Private methods
   updateAdvancedControls = ->

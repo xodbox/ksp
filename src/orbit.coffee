@@ -331,7 +331,7 @@ ejectionAngle = (vsoi, theta, prograde) ->
   else
     Math.acos(numeric.dotVV([vx, vy, 0], prograde))
 
-Orbit.transfer = (transferType, originBody, destinationBody, t0, dt, initialOrbitalVelocity, finalOrbitalVelocity, p0, v0, n0, p1, v1, planeChangeAngleToIntercept) ->
+Orbit.transfer = (transferType, originBody, destinationBody, t0, dt, initialOrbitalVelocity, finalOrbitalVelocity, p0, v0, n0, p1, v1, planeChangeAngleToIntercept, distancia) ->
   # Fill in missing values
   referenceBody = originBody.orbit.referenceBody
   t1 = t0 + dt

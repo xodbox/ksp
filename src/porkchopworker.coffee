@@ -18,6 +18,7 @@ HEIGHT = 300
   shortestTimeOfFlight = event.data.shortestTimeOfFlight
   xResolution = event.data.xScale / WIDTH
   yResolution = event.data.yScale / HEIGHT
+  distancia = event.data.distancia
   
   originOrbit = originBody.orbit
   destinationOrbit = destinationBody.orbit
@@ -56,7 +57,7 @@ HEIGHT = 300
       p2 = destinationOrbit.positionAtTrueAnomaly(trueAnomaly)
       v2 = destinationOrbit.velocityAtTrueAnomaly(trueAnomaly)
   
-      transfer = Orbit.transfer(transferType, originBody, destinationBody, departureTime, timeOfFlight, initialOrbitalVelocity, finalOrbitalVelocity, p1, v1, n1, p2, v2)
+      transfer = Orbit.transfer(transferType, originBody, destinationBody, departureTime, timeOfFlight, initialOrbitalVelocity, finalOrbitalVelocity, p1, v1, n1, p2, v2, distancia)
       deltaVs[i++] = deltaV = transfer.deltaV
 
       if deltaV < minDeltaV

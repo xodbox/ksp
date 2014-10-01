@@ -19,7 +19,7 @@
   HEIGHT = 300;
 
   this.onmessage = function(event) {
-    var arrivalTime, deltaV, deltaVCount, deltaVs, departureTime, destinationBody, destinationOrbit, earliestDeparture, error, finalOrbitalVelocity, i, initialOrbitalVelocity, lastProgress, logDeltaV, maxDeltaV, minDeltaV, minDeltaVPoint, n1, now, originBody, originOrbit, originPositions, originVelocities, p1, p2, referenceBody, shortestTimeOfFlight, sumLogDeltaV, sumSqLogDeltaV, timeOfFlight, transfer, transferType, trueAnomaly, v1, v2, x, xResolution, y, yResolution, _i, _j, _k;
+    var arrivalTime, deltaV, deltaVCount, deltaVs, departureTime, destinationBody, destinationOrbit, distancia, earliestDeparture, error, finalOrbitalVelocity, i, initialOrbitalVelocity, lastProgress, logDeltaV, maxDeltaV, minDeltaV, minDeltaVPoint, n1, now, originBody, originOrbit, originPositions, originVelocities, p1, p2, referenceBody, shortestTimeOfFlight, sumLogDeltaV, sumSqLogDeltaV, timeOfFlight, transfer, transferType, trueAnomaly, v1, v2, x, xResolution, y, yResolution, _i, _j, _k;
     transferType = event.data.transferType;
     originBody = CelestialBody.fromJSON(event.data.originBody);
     initialOrbitalVelocity = event.data.initialOrbitalVelocity;
@@ -29,6 +29,7 @@
     shortestTimeOfFlight = event.data.shortestTimeOfFlight;
     xResolution = event.data.xScale / WIDTH;
     yResolution = event.data.yScale / HEIGHT;
+    distancia = event.data.distancia;
     originOrbit = originBody.orbit;
     destinationOrbit = destinationBody.orbit;
     referenceBody = originOrbit.referenceBody;
@@ -59,7 +60,7 @@
         trueAnomaly = destinationOrbit.trueAnomalyAt(arrivalTime);
         p2 = destinationOrbit.positionAtTrueAnomaly(trueAnomaly);
         v2 = destinationOrbit.velocityAtTrueAnomaly(trueAnomaly);
-        transfer = Orbit.transfer(transferType, originBody, destinationBody, departureTime, timeOfFlight, initialOrbitalVelocity, finalOrbitalVelocity, p1, v1, n1, p2, v2);
+        transfer = Orbit.transfer(transferType, originBody, destinationBody, departureTime, timeOfFlight, initialOrbitalVelocity, finalOrbitalVelocity, p1, v1, n1, p2, v2, distancia);
         deltaVs[i++] = deltaV = transfer.deltaV;
         if (deltaV < minDeltaV) {
           minDeltaV = deltaV;
