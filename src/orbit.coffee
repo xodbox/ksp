@@ -286,7 +286,7 @@ insertionToCircularDeltaV2 = (body, vsoi, v0, rdest, d) ->
   dy = 1 * d * rdest[0] / Math.sqrt(rdest[0] * rdest[0] + rdest[1] * rdest[1])
   th = Math.acos((dx * vsoi[0] + dy * vsoi[1]) / (d * v))
   b = d * Math.sin(th)
-  a = mu * rsoi # / (2 * mu - roi * v * v)
+  a = mu * rsoi / (2 * mu - rsoi * v * v)
   
   
 ejectionAngle = (vsoi, theta, prograde) ->

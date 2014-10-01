@@ -423,7 +423,7 @@
     dy = 1 * d * rdest[0] / Math.sqrt(rdest[0] * rdest[0] + rdest[1] * rdest[1]);
     th = Math.acos((dx * vsoi[0] + dy * vsoi[1]) / (d * v));
     b = d * Math.sin(th);
-    return a = mu * rsoi;
+    return a = mu * rsoi / (2 * mu - rsoi * v * v);
   };
 
   ejectionAngle = function(vsoi, theta, prograde) {
