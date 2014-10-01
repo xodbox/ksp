@@ -424,7 +424,7 @@
     th = Math.acos((dx * vsoi[0] + dy * vsoi[1]) / (d * v));
     b = d * Math.sin(th);
     a = mu * rsoi / (2 * mu - rsoi * v * v);
-    return 100;
+    return -1 * mu / (v * v);
   };
 
   ejectionAngle = function(vsoi, theta, prograde) {
