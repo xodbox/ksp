@@ -277,6 +277,7 @@ insertionToCircularDeltaV = (body, vsoi, v0) ->
   mu = body.gravitationalParameter
   rsoi = body.sphereOfInfluence
   Math.sqrt(vsoi * vsoi + 2 * v0 * v0 - 2 * mu / rsoi) - v0 # Eq 4.15 Velocity at periapsis
+  32
 
 ejectionAngle = (vsoi, theta, prograde) ->
   # Normalize and componentize the soi velocity vector
