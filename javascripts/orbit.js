@@ -415,11 +415,12 @@
   };
 
   insertionToCircularDeltaV2 = function(body, vsoi, v0, rdest, d) {
-    var dx, mu, rsoi, v;
+    var dx, dy, mu, rsoi, v;
     mu = body.gravitationalParameter;
     rsoi = body.sphereOfInfluence;
     v = numeric.norm2(vsoi);
-    return dx = -1 * d * rdest[1] / Math.sqrt(rdest[0] * rdest[0] + rdest[1] * rdest[1]);
+    dx = -1 * d * rdest[1] / Math.sqrt(rdest[0] * rdest[0] + rdest[1] * rdest[1]);
+    return dy = 1 * d * rdest[0] / Math.sqrt(rdest[0] * rdest[0] + rdest[1] * rdest[1]);
   };
 
   ejectionAngle = function(vsoi, theta, prograde) {
