@@ -254,8 +254,8 @@
       initialOrbit = $('#initialOrbit').val().trim();
       finalOrbit = $('#finalOrbit').val().trim();
       transferType = $('#transferTypeSelect').val();
-      dist = 50;
-      distancia = dist;
+      dist = $('#distancia').val().trim();
+      distancia = dist * 1e3;
       if ((origin.mass == null) || +initialOrbit === 0) {
         initialOrbitalVelocity = 0;
       } else {
