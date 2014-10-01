@@ -178,7 +178,7 @@ class MissionForm
     shortestTimeOfFlight = KerbalTime.fromDuration(0, +$('#shortestTimeOfFlight').val()).t
     yScale = KerbalTime.fromDuration(0, +$('#longestTimeOfFlight').val()).t - shortestTimeOfFlight
 	
-    initialOrbitalVelocity = 2200
+    distancia = 2200
 	
     mission = {
       transferType: transferType
