@@ -433,7 +433,7 @@ Orbit.transfer = (transferType, originBody, destinationBody, t0, dt, initialOrbi
     insertionDeltaV = numeric.norm2(insertionDeltaVector) # This is actually the hyperbolic excess velocity if inserting into a parking orbit
     insertionInclination = Math.asin(insertionDeltaVector[2] / insertionDeltaV)
     if finalOrbitalVelocity
-      insertionDeltaV = insertionToCircularDeltaV(destinationBody, insertionDeltaV, finalOrbitalVelocity)
+      # insertionDeltaV = insertionToCircularDeltaV(destinationBody, insertionDeltaV, finalOrbitalVelocity)
       insertionDeltaV = insertionToCircularDeltaV2(destinationBody, insertionDeltaVector, finalOrbitalVelocity, p1, 100000)
   else
     insertionDeltaV = 0
