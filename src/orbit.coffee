@@ -345,6 +345,8 @@ Orbit.transfer = (transferType, originBody, destinationBody, t0, dt, initialOrbi
     v1 ?= destinationBody.orbit.velocityAtTrueAnomaly(nu1)
   n0 ?= originBody.orbit.normalVector()
   
+  unless distancia?
+    distancia ?= 200
   dist = distancia
   
   if transferType == "optimal"
