@@ -248,13 +248,14 @@
     };
 
     MissionForm.prototype.mission = function() {
-      var destination, distancia, earliestDeparture, finalOrbit, finalOrbitalVelocity, initialOrbit, initialOrbitalVelocity, latestDeparture, mission, origin, shortestTimeOfFlight, transferType, xScale, yScale;
+      var destination, dist, distancia, earliestDeparture, finalOrbit, finalOrbitalVelocity, initialOrbit, initialOrbitalVelocity, latestDeparture, mission, origin, shortestTimeOfFlight, transferType, xScale, yScale;
       origin = this.origin();
       destination = this.destination();
       initialOrbit = $('#initialOrbit').val().trim();
       finalOrbit = $('#finalOrbit').val().trim();
       transferType = $('#transferTypeSelect').val();
-      distancia = 0;
+      dist = 0;
+      distancia = dist;
       if ((origin.mass == null) || +initialOrbit === 0) {
         initialOrbitalVelocity = 0;
       } else {
