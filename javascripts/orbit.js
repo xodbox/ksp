@@ -578,7 +578,7 @@
       insertionInclination = Math.asin(insertionDeltaVector[2] / insertionDeltaV);
       if (finalOrbitalVelocity) {
         insertionDeltaV = insertionToCircularDeltaV(destinationBody, insertionDeltaV, finalOrbitalVelocity);
-        insertionDeltaV2 = 100;
+        insertionDeltaV2 = initialOrbitalVelocity;
       }
     } else {
       insertionDeltaV = 0;
