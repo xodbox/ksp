@@ -277,8 +277,16 @@ insertionToCircularDeltaV = (body, vsoi, v0) ->
   mu = body.gravitationalParameter
   rsoi = body.sphereOfInfluence
   Math.sqrt(vsoi * vsoi + 2 * v0 * v0 - 2 * mu / rsoi) - v0 # Eq 4.15 Velocity at periapsis
-  32
 
+insertionToCircularDeltaV2 = (body, vsoi, v0, rdest, d) -> 
+  mu = body.gravitationalParameter
+  rsoi = body.sphereOfInfluence
+  v = numeric.norm2(vsoi)
+  dx = -1 * d * rdest[1] / Math.sqrt(rdest[0] * rdest[0] + rdest[1] * rdest[1])
+  dy = -1 * d * rdest[0] / Math.sqrt(rdest[0] * rdest[0] + rdest[1] * rdest[1])
+  th = Math.acos((dx * vsoi [0] + dy * vsoi[1]) / d * v)
+  d * Math.sin(th)
+  
 ejectionAngle = (vsoi, theta, prograde) ->
   # Normalize and componentize the soi velocity vector
   [ax, ay, az] = normalize(vsoi)
@@ -424,6 +432,7 @@ Orbit.transfer = (transferType, originBody, destinationBody, t0, dt, initialOrbi
     insertionInclination = Math.asin(insertionDeltaVector[2] / insertionDeltaV)
     if finalOrbitalVelocity
       insertionDeltaV = insertionToCircularDeltaV(destinationBody, insertionDeltaV, finalOrbitalVelocity)
+      insertionDeltaV = insertionToCircularDeltaV2(destinationBody, insertionDeltaVector, finalOrbitalVelocity, p1, 100000)
   else
     insertionDeltaV = 0
   
