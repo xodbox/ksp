@@ -420,7 +420,7 @@
     rsoi = body.sphereOfInfluence;
     v = numeric.norm2(vsoi);
     vect = numeric.addVV([1, 2], [3, 4]);
-    return vect[1];
+    return vect[2];
   };
 
   ejectionAngle = function(vsoi, theta, prograde) {
