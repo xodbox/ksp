@@ -345,7 +345,7 @@ Orbit.transfer = (transferType, originBody, destinationBody, t0, dt, initialOrbi
     v1 ?= destinationBody.orbit.velocityAtTrueAnomaly(nu1)
   n0 ?= originBody.orbit.normalVector()
   
-  dist = 30
+  dist = distancia
   
   if transferType == "optimal"
     ballisticTransfer = Orbit.transfer("ballistic", originBody, destinationBody, t0, dt, initialOrbitalVelocity, finalOrbitalVelocity, p0, v0, n0, p1, v1, distancia)
