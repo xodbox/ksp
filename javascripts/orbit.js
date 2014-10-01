@@ -419,7 +419,7 @@
     mu = body.gravitationalParameter;
     rsoi = body.sphereOfInfluence;
     v = numeric.norm2(vsoi);
-    return vsoi[0];
+    return vsoi[1];
   };
 
   ejectionAngle = function(vsoi, theta, prograde) {
