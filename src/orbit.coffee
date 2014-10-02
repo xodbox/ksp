@@ -436,7 +436,7 @@ Orbit.transfer = (transferType, originBody, destinationBody, t0, dt, initialOrbi
     if finalOrbitalVelocity
       insertionDeltaV = insertionToCircularDeltaV(destinationBody, insertionDeltaV, finalOrbitalVelocity)
       # insertionDeltaV2 = insertionToCircularDeltaV2(destinationBody, insertionDeltaVector, finalOrbitalVelocity, p1, 100000)
-      insertionDeltaV2 = 10
+      insertionDeltaV2 = 642
   else
     insertionDeltaV = 0
   
@@ -453,8 +453,8 @@ Orbit.transfer = (transferType, originBody, destinationBody, t0, dt, initialOrbi
     planeChangeAngle: if planeChangeTime? then planeChangeAngle else 0
     insertionVelocity: insertionVelocity
     insertionInclination: insertionInclination
-    deltaV: ejectionDeltaV + planeChangeDeltaV + insertionDeltaV
     insertionDeltaV: insertionDeltaV2
+    deltaV: ejectionDeltaV + planeChangeDeltaV + insertionDeltaV
   }
 
 Orbit.transferDetails = (transfer, originBody, t0, initialOrbitalVelocity) ->

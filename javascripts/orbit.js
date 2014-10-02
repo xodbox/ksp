@@ -578,7 +578,7 @@
       insertionInclination = Math.asin(insertionDeltaVector[2] / insertionDeltaV);
       if (finalOrbitalVelocity) {
         insertionDeltaV = insertionToCircularDeltaV(destinationBody, insertionDeltaV, finalOrbitalVelocity);
-        insertionDeltaV2 = 10;
+        insertionDeltaV2 = 642;
       }
     } else {
       insertionDeltaV = 0;
@@ -596,8 +596,8 @@
       planeChangeAngle: planeChangeTime != null ? planeChangeAngle : 0,
       insertionVelocity: insertionVelocity,
       insertionInclination: insertionInclination,
-      deltaV: ejectionDeltaV + planeChangeDeltaV + insertionDeltaV,
-      insertionDeltaV: insertionDeltaV2
+      insertionDeltaV: insertionDeltaV2,
+      deltaV: ejectionDeltaV + planeChangeDeltaV + insertionDeltaV
     };
   };
 
