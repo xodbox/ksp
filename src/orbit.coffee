@@ -455,7 +455,7 @@ Orbit.transfer = (distancia, transferType, originBody, destinationBody, t0, dt, 
     insertionInclination: insertionInclination
     insertionDeltaV: insertionDeltaV
     deltaV: ejectionDeltaV + planeChangeDeltaV + insertionDeltaV
-    distS: insertionDeltaV2
+    insertionDeltaV2: insertionDeltaV2
   }
 
 Orbit.transferDetails = (transfer, originBody, t0, initialOrbitalVelocity) ->
