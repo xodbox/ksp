@@ -578,7 +578,7 @@
       insertionInclination = Math.asin(insertionDeltaVector[2] / insertionDeltaV);
       if (finalOrbitalVelocity) {
         insertionDeltaV = insertionToCircularDeltaV(destinationBody, insertionDeltaV, finalOrbitalVelocity);
-        insertionDeltaV2 = 642;
+        insertionDeltaV2 = distancia;
       }
     } else {
       insertionDeltaV = 0;
