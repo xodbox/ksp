@@ -121,7 +121,7 @@
       $('#insertionDeltaV').text("N/A");
     }
     $('#totalDeltaV').text(numberWithCommas(transfer.deltaV.toFixed()) + " m/s");
-    $('#insertionDeltaV2').text(numberWithCommas(transfer.insertionDeltaV2) + " m");
+    $('#insertionDeltaV2').text(transfer.insertionDeltaV2.toString() + " m");
     return $('#transferDetails:hidden').fadeIn();
   };
 

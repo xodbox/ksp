@@ -90,7 +90,7 @@ showTransferDetails = (transfer, t0, dt) ->
     $('#insertionDeltaV').text("N/A")
   $('#totalDeltaV').text(numberWithCommas(transfer.deltaV.toFixed()) + " m/s")
   
-  $('#insertionDeltaV2').text(numberWithCommas(transfer.insertionDeltaV2) + " m")
+  $('#insertionDeltaV2').text(transfer.insertionDeltaV2.toString() + " m")
   
   $('#transferDetails:hidden').fadeIn()
 
