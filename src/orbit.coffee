@@ -436,7 +436,7 @@ Orbit.transfer = (distancia, transferType, originBody, destinationBody, t0, dt, 
     if finalOrbitalVelocity
       insertionDeltaV = insertionToCircularDeltaV(destinationBody, insertionDeltaV, finalOrbitalVelocity)
       # insertionDeltaV2 = insertionToCircularDeltaV2(destinationBody, insertionDeltaVector, finalOrbitalVelocity, p1, 100000)
-      insertionDeltaV2 = distancia
+      insertionDeltaV2 = 642
   else
     insertionDeltaV = 0
   
