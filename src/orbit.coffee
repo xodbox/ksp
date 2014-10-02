@@ -435,8 +435,7 @@ Orbit.transfer = (distancia, transferType, originBody, destinationBody, t0, dt, 
     insertionInclination = Math.asin(insertionDeltaVector[2] / insertionDeltaV)
     if finalOrbitalVelocity
       insertionDeltaV = insertionToCircularDeltaV(destinationBody, insertionDeltaV, finalOrbitalVelocity)
-      # insertionDeltaV2 = insertionToCircularDeltaV2(destinationBody, insertionDeltaVector, finalOrbitalVelocity, p1, distancia)
-      insertionDeltaV2 = distancia
+      insertionDeltaV2 = insertionToCircularDeltaV2(destinationBody, insertionDeltaVector, finalOrbitalVelocity, p1, distancia)
   else
     insertionDeltaV = 0
   
