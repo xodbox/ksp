@@ -596,8 +596,8 @@
       planeChangeAngle: planeChangeTime != null ? planeChangeAngle : 0,
       insertionVelocity: insertionVelocity,
       insertionInclination: insertionInclination,
-      insertionDeltaV: insertionDeltaV2,
-      deltaV: ejectionDeltaV + planeChangeDeltaV + insertionDeltaV
+      deltaV: ejectionDeltaV + planeChangeDeltaV + insertionDeltaV,
+      insertionDeltaV: insertionDeltaV2
     };
   };
 
