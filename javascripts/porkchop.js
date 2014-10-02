@@ -54,7 +54,7 @@
     _ref = [point.x, point.y], x = _ref[0], y = _ref[1];
     t0 = mission.earliestDeparture + x * mission.xResolution;
     dt = mission.shortestTimeOfFlight + y * mission.yResolution;
-    transfer = Orbit.transfer(mission.transferType, mission.originBody, mission.destinationBody, t0, dt, mission.initialOrbitalVelocity, mission.finalOrbitalVelocity);
+    transfer = Orbit.transfer(mission.distancia, mission.transferType, mission.originBody, mission.destinationBody, t0, dt, mission.initialOrbitalVelocity, mission.finalOrbitalVelocity);
     return showTransferDetails(transfer, t0, dt);
   };
 

@@ -331,7 +331,7 @@ ejectionAngle = (vsoi, theta, prograde) ->
   else
     Math.acos(numeric.dotVV([vx, vy, 0], prograde))
 
-Orbit.transfer = (transferType, originBody, destinationBody, t0, dt, initialOrbitalVelocity, finalOrbitalVelocity, p0, v0, n0, p1, v1, planeChangeAngleToIntercept) ->
+Orbit.transfer = (distancia, transferType, originBody, destinationBody, t0, dt, initialOrbitalVelocity, finalOrbitalVelocity, p0, v0, n0, p1, v1, planeChangeAngleToIntercept) ->
   # Fill in missing values
   referenceBody = originBody.orbit.referenceBody
   t1 = t0 + dt
@@ -346,9 +346,9 @@ Orbit.transfer = (transferType, originBody, destinationBody, t0, dt, initialOrbi
   n0 ?= originBody.orbit.normalVector()
   
   if transferType == "optimal"
-    ballisticTransfer = Orbit.transfer("ballistic", originBody, destinationBody, t0, dt, initialOrbitalVelocity, finalOrbitalVelocity, p0, v0, n0, p1, v1)
+    ballisticTransfer = Orbit.transfer(distancia, "ballistic", originBody, destinationBody, t0, dt, initialOrbitalVelocity, finalOrbitalVelocity, p0, v0, n0, p1, v1)
     return ballisticTransfer if ballisticTransfer.angle <= HALF_PI
-    planeChangeTransfer = Orbit.transfer("optimalPlaneChange", originBody, destinationBody, t0, dt, initialOrbitalVelocity, finalOrbitalVelocity, p0, v0, n0, p1, v1)
+    planeChangeTransfer = Orbit.transfer(distancia, "optimalPlaneChange", originBody, destinationBody, t0, dt, initialOrbitalVelocity, finalOrbitalVelocity, p0, v0, n0, p1, v1)
     return if ballisticTransfer.deltaV < planeChangeTransfer.deltaV then ballisticTransfer else planeChangeTransfer
   else if transferType == "optimalPlaneChange"
     if numeric.norm2(p0) > numeric.norm2(p1)
@@ -389,7 +389,7 @@ Orbit.transfer = (transferType, originBody, destinationBody, t0, dt, initialOrbi
       planeChangeAngle = Math.atan2(Math.tan(relativeInclination), Math.sin(x))
       Math.abs(2 * orbit.speedAtTrueAnomaly(trueAnomalyAtIntercept - x) * Math.sin(0.5 * planeChangeAngle))
     
-    return Orbit.transfer("planeChange", originBody, destinationBody, t0, dt, initialOrbitalVelocity, finalOrbitalVelocity, p0, v0, n0, p1, v1, x)
+    return Orbit.transfer(distancia, "planeChange", originBody, destinationBody, t0, dt, initialOrbitalVelocity, finalOrbitalVelocity, p0, v0, n0, p1, v1, x)
   else if transferType == "planeChange"
     planeChangeAngleToIntercept ?= HALF_PI
     relativeInclination = Math.asin(numeric.dotVV(p1, n0) / numeric.norm2(p1))
@@ -436,7 +436,7 @@ Orbit.transfer = (transferType, originBody, destinationBody, t0, dt, initialOrbi
     if finalOrbitalVelocity
       insertionDeltaV = insertionToCircularDeltaV(destinationBody, insertionDeltaV, finalOrbitalVelocity)
       # insertionDeltaV2 = insertionToCircularDeltaV2(destinationBody, insertionDeltaVector, finalOrbitalVelocity, p1, 100000)
-      insertionDeltaV2 = 642
+      insertionDeltaV2 = distancia
   else
     insertionDeltaV = 0
   
@@ -550,7 +550,7 @@ Orbit.refineTransfer = (transfer, transferType, originBody, destinationBody, t0,
     tempBody = new CelestialBody(null, null, null, orbit)
     
     # Re-calculate the transfer
-    transfer = Orbit.transfer(transferType, tempBody, destinationBody, t1, dtFromSOI, 0, finalOrbitalVelocity, p1, originVelocityAtSOI)
+    transfer = Orbit.transfer(distancia, transferType, tempBody, destinationBody, t1, dtFromSOI, 0, finalOrbitalVelocity, p1, originVelocityAtSOI)
     
     if i & 1
       lastEjectionDeltaVector = transfer.ejectionDeltaVector
