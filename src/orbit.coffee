@@ -285,6 +285,7 @@ insertionToCircularDeltaV2 = (body, vsoi, v0, rdest, d) ->
   dx = -1 * d * rdest[1] / Math.sqrt(rdest[0] * rdest[0] + rdest[1] * rdest[1])
   dy = 1 * d * rdest[0] / Math.sqrt(rdest[0] * rdest[0] + rdest[1] * rdest[1])
   th = Math.acos((dx * vsoi[0] + dy * vsoi[1]) / (d * v))
+  th = Math.acos(0)
   # b = d * Math.sin(th)
   # a = mu * rsoi / (2 * mu - rsoi * v * v)
   # e = Math.sqrt(1 + b * b / (a * a))
